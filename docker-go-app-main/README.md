@@ -1,58 +1,48 @@
-🚀 Quick Start
-Option A: Run from Docker Hub (Fastest)
-bash
-docker run -p 8080:8080 --name go-web-app aliashraf510/my-go-app:latest
-Access: http://localhost:8080
+New chat
+refactor this readme file in way to be fully different# Go Docker App
 
-Option B: Build & Run Locally
-bash
-# Clone and build
-git clone <your-repo>
-cd go-docker-app
+Simple Go web application that runs in Docker.
 
-# Build Docker image
-docker build -t go-web-app:local .
+## What it does
 
-# Run container
-docker run -p 8080:8080 --name go-web-app go-web-app:local
-📌 Application Overview
-Port: 8080
-Endpoint: / (root)
-Response: Hello from Dockerized Go app!
-Health Check: http://localhost:8080/health (returns 200 OK)
+- Serves HTTP on port 8080
+- Returns "Hello from Dockerized Go app!"
 
-This microservice demonstrates:
+## How to run
 
-Minimal Go web server implementation
+### With Docker (recommended)
 
-Optimized Docker containerization
+```bash
+# Build and run
+docker build -t my-go-app .
+docker run -p 8080:8080 my-go-app
+```
 
-Multi-stage Docker builds
+### Without Docker
 
-Public image distribution via Docker Hub
-
-🔧 Development & Customization
-Run in Development Mode
-bash
-# Hot-reload with Air (watch for changes)
-go install github.com/cosmtrek/air@latest
-air
-
-# Or with standard Go
+```bash
+# Run directly
 go run main.go
-Modify the Application
-Edit main.go to change response messages
+```
 
-Update Dockerfile for additional dependencies
+Visit: <http://localhost:8080>
 
-Adjust go.mod for new packages
+## Docker Hub
 
-Build Custom Image
-bash
-# Multi-architecture build
-docker buildx build --platform linux/amd64,linux/arm64 -t yourusername/go-app:v1 .
+**Image:** [aliashraf510/my-go-app](https://hub.docker.com/r/aliashraf510/my-go-app)
 
-# Push to registry
-docker push your
+```bash
+# Pull and run from Docker Hub
+docker pull aliashraf510/my-go-app:latest
+docker run -p 8080:8080 aliashraf510/my-go-app:latest
+```
+
+## Files
+
+- `main.go` - Go application
+- `Dockerfile` - Docker configuration  
+- `go.mod` - Go module file
+
+## Author
 
 Ibrahim Hisham
