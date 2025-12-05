@@ -1,47 +1,58 @@
-# Go Docker App
+🚀 Quick Start
+Option A: Run from Docker Hub (Fastest)
+bash
+docker run -p 8080:8080 --name go-web-app aliashraf510/my-go-app:latest
+Access: http://localhost:8080
 
-Simple Go web application that runs in Docker.
+Option B: Build & Run Locally
+bash
+# Clone and build
+git clone <your-repo>
+cd go-docker-app
 
-## What it does
+# Build Docker image
+docker build -t go-web-app:local .
 
-- Serves HTTP on port 8080
-- Returns "Hello from Dockerized Go app!"
+# Run container
+docker run -p 8080:8080 --name go-web-app go-web-app:local
+📌 Application Overview
+Port: 8080
+Endpoint: / (root)
+Response: Hello from Dockerized Go app!
+Health Check: http://localhost:8080/health (returns 200 OK)
 
-## How to run
+This microservice demonstrates:
 
-### With Docker (recommended)
+Minimal Go web server implementation
 
-```bash
-# Build and run
-docker build -t my-go-app .
-docker run -p 8080:8080 my-go-app
-```
+Optimized Docker containerization
 
-### Without Docker
+Multi-stage Docker builds
 
-```bash
-# Run directly
+Public image distribution via Docker Hub
+
+🔧 Development & Customization
+Run in Development Mode
+bash
+# Hot-reload with Air (watch for changes)
+go install github.com/cosmtrek/air@latest
+air
+
+# Or with standard Go
 go run main.go
-```
+Modify the Application
+Edit main.go to change response messages
 
-Visit: <http://localhost:8080>
+Update Dockerfile for additional dependencies
 
-## Docker Hub
+Adjust go.mod for new packages
 
-**Image:** [aliashraf510/my-go-app](https://hub.docker.com/r/aliashraf510/my-go-app)
+Build Custom Image
+bash
+# Multi-architecture build
+docker buildx build --platform linux/amd64,linux/arm64 -t yourusername/go-app:v1 .
 
-```bash
-# Pull and run from Docker Hub
-docker pull aliashraf510/my-go-app:latest
-docker run -p 8080:8080 aliashraf510/my-go-app:latest
-```
+# Push to registry
+docker push your
 
-## Files
-
-- `main.go` - Go application
-- `Dockerfile` - Docker configuration  
-- `go.mod` - Go module file
-
-## Author
-
-Ali Ashraf
+Ibrahim Hisham
